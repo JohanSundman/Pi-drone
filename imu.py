@@ -50,7 +50,7 @@ class Accelerometer:
 			time.sleep(delay);
 
 		# Get the avarage out of them
-		avg = {x: 0, y: 0, z: 0}
+		avg = Axis(0,0,0)
 		for i in temp: # Add them all together
 			avg.x += temp[i].x
 			avg.y += temp[i].y
