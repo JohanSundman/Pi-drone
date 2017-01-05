@@ -42,7 +42,7 @@ class Accelerometer:
 	def accurate(self, times, delay):
 		temp = [] # Temporary array of values
 		# Measuring multiple values
-		for i in times:
+		for i in range(times):
 			x = self.get("x")
 			temp.append(Axis(x,y,z))
 			time.sleep(delay);
