@@ -5,7 +5,7 @@
 
 import time
 import math
-#import smbus
+import os
 
 from link import * # Link to the hardware
 import drone
@@ -34,6 +34,10 @@ def main():
 		y = read_word_2c(SMBUSS_ADR, ACCEL_Y_ADR)
 		z = read_word_2c(SMBUSS_ADR, ACCEL_Z_ADR)
 
+		# Clear before print
+		os.system('cls' if os.name == 'nt' else 'clear')
+		
+		# Print
 		print("x:", x)
 		print("y:", y)
 		print("z:", z)
