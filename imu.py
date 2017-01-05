@@ -47,7 +47,7 @@ class Accelerometer:
 			y = self.get("x")
 			z = self.get("x")
 			temp.append(Axis(x,y,z))
-			time.sleep(delay);
+			#time.sleep(delay);
 
 		# Get the avarage out of them
 		avg = Axis(0,0,0)

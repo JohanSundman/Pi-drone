@@ -24,7 +24,7 @@ def main():
 
 		# Fetch data
 		print("Accurate x:", drone_imu.accel.accurate(10, 0.1).x)
-		
+
 		# Print
 		#print("x:", drone_imu.accel.x)
 		#print("y:", drone_imu.accel.y)
