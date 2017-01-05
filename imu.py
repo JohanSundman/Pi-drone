@@ -51,10 +51,10 @@ class Accelerometer:
 
 		# Get the avarage out of them
 		avg = Axis(0,0,0)
-		for i in temp: # Add them all together
-			avg.x += temp[i].x
-			avg.y += temp[i].y
-			avg.z += temp[i].z
+		for obj in temp: # Add them all together
+			avg.x += obj.x
+			avg.y += obj.y
+			avg.z += obj.z
 		
 		for instance in avg: # Divide them by the number of measurements
 			instance /= times # 
