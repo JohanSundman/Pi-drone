@@ -1,8 +1,6 @@
 # Link between the hardware and software
 # Functions that communicate with the sensors
 
-import time
-import math
 # Import the packages communicating with the hardware
 import smbus # Raspberry pi i2c 
 import RPi.GPIO as GPIO # Raspberry pi gpio pins
