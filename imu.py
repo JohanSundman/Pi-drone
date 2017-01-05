@@ -24,11 +24,11 @@ class Accelerometer:
 	# Get a variable
 	def get(self, axis):
 		temp = False
-		if axis == "x"
+		if axis == "x":
 			temp = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
-		elif axis == "y"
+		elif axis == "y":
 			temp = read_word_2c(SMBUSS_ADR, ACCEL_Y_ADR)
-		elif axis == "z"
+		elif axis == "z":
 			temp = read_word_2c(SMBUSS_ADR, ACCEL_Z_ADR)
 		return temp
 
