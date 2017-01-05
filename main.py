@@ -23,7 +23,10 @@ def main():
 		os.system('cls' if os.name == 'nt' else 'clear')
 
 		# Fetch data
-		print("Accurate x:", drone_imu.accel.accurate(3, 0.1).x)
+		data = drone_imu.accel.accurate(4, 0.1)
+		print("X: ", data.x)
+		print("Y: ", data.y)
+		print("Z: ", data.z)
 
 		# Print
 		#print("x:", drone_imu.accel.x)
