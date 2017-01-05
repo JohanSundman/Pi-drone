@@ -44,6 +44,8 @@ class Accelerometer:
 		# Measuring multiple values
 		for i in range(times):
 			x = self.get("x")
+			y = self.get("x")
+			z = self.get("x")
 			temp.append(Axis(x,y,z))
 			time.sleep(delay);
 
