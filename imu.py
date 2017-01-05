@@ -55,9 +55,9 @@ class Accelerometer:
 			avg.x += obj.x
 			avg.y += obj.y
 			avg.z += obj.z
-		
-		for instance in avg: # Divide them by the number of measurements
-			instance /= times # 
+		avg.x /= times # Divide them by their amount
+		avg.y /= times
+		avg.z /= times
 		
 		# Return the obj
 		return avg
