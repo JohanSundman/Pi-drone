@@ -12,9 +12,6 @@ POWER_MGMT_2 = 0x6c
 
 
 class Imu:
-	accel # The accelerometer object
-	gyro # The gyroscope object
-
 	def __init__(self):
 		wake_up(SMBUSS_ADR, POWER_MGMT_1) # Activate the imu
 		self.accel = Accelerometer() # Create an accelerometer instance
@@ -23,8 +20,6 @@ class Imu:
 
 
 class Accelerometer(Imu):
-	x, y, z # Axises
-
 	def update():
 		self.x = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
 		self.x = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
