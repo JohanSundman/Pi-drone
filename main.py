@@ -16,6 +16,9 @@ def main():
 	# Create the components
 	drone_imu = imu.Imu()
 
+	test = {x: 23, y: 20}
+	print("test", test.x)
+
 	# The program loop
 	while True:
 		# Fetch data
