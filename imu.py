@@ -20,12 +20,56 @@ class Imu:
 
 
 class Accelerometer:
+	
+	# Get a variable
+	def get(self, axis):
+		temp = False
+		if axis == "x"
+			temp = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
+		elif axis == "y"
+			temp = read_word_2c(SMBUSS_ADR, ACCEL_Y_ADR)
+		elif axis == "z"
+			temp = read_word_2c(SMBUSS_ADR, ACCEL_Z_ADR)
+		return temp
+
+
 	def update(self):
-		self.x = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
-		self.y = read_word_2c(SMBUSS_ADR, ACCEL_Y_ADR)
-		self.z = read_word_2c(SMBUSS_ADR, ACCEL_Z_ADR)
+		self.x = get("x")
+		self.y = get("y")
+		self.z = get("z")
+
+
+	def accurate(self, times, delay):
+		temp = [] # Temporary array of values
+		# Measuring multiple values
+		for i in times:
+			x = this.get("x")
+			temp.append(Axis(x,y,z))
+			time.sleep(delay);
+
+		# Get the avarage out of them
+		avg = {x: 0, y: 0, z: 0}
+		for i in temp # Add them all together
+			avg.x += temp[i].x
+			avg.y += temp[i].y
+			avg.z += temp[i].z
+		
+		for instance in avg # Divide them by the number of measurements
+			instance /= times # 
+		
+		# Return the obj
+		return avg
+
 
 
 class Gyroscope:
 	def update(self):
 		pass
+
+
+class Axis:
+	def __init__(self, x, y, z):
+		self.x = x
+		self.y = y
+		self.z = z
+

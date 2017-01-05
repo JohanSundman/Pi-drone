@@ -19,7 +19,7 @@ def main():
 	# The program loop
 	while True:
 		# Fetch data
-		drone_imu.accel.update()
+		drone_imu.accel.accurate(10, 0.1)
 
 		# Clear before print
 		os.system('cls' if os.name == 'nt' else 'clear')
