@@ -34,9 +34,9 @@ def main():
 		y = read_word_2c(SMBUSS_ADR, ACCEL_Y_ADR)
 		z = read_word_2c(SMBUSS_ADR, ACCEL_Z_ADR)
 
-		print("x:" + x)
-		print("y:" + y)
-		print("z:" + z)
+		print("x:", x)
+		print("y:", y)
+		print("z:", z)
 
 		# End the cycle
 		time.sleep(0.1)
