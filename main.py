@@ -27,6 +27,10 @@ def main():
 		print("X: ", data.x)
 		print("Y: ", data.y)
 		print("Z: ", data.z)
+		print()
+		print("x: ", drone_imu.accel.get("x"))
+		print("y: ", drone_imu.accel.get("x"))
+		print("z: ", drone_imu.accel.get("x"))
 
 		# Print
 		#print("x:", drone_imu.accel.x)
