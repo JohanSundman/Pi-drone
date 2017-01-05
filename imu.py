@@ -22,8 +22,8 @@ class Imu:
 class Accelerometer:
 	def update(self):
 		self.x = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
-		self.x = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
-		self.x = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
+		self.y = read_word_2c(SMBUSS_ADR, ACCEL_Y_ADR)
+		self.z = read_word_2c(SMBUSS_ADR, ACCEL_Z_ADR)
 
 
 class Gyroscope:
