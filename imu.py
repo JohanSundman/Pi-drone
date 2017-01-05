@@ -12,7 +12,6 @@ POWER_MGMT_2 = 0x6c
 
 
 class Imu:
-	buss # The bus to get info from
 	accel # The accelerometer object
 	gyro # The gyroscope object
 
