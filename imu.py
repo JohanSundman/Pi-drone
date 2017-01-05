@@ -43,18 +43,18 @@ class Accelerometer:
 		temp = [] # Temporary array of values
 		# Measuring multiple values
 		for i in times:
-			x = this.get("x")
+			x = self.get("x")
 			temp.append(Axis(x,y,z))
 			time.sleep(delay);
 
 		# Get the avarage out of them
 		avg = {x: 0, y: 0, z: 0}
-		for i in temp # Add them all together
+		for i in temp: # Add them all together
 			avg.x += temp[i].x
 			avg.y += temp[i].y
 			avg.z += temp[i].z
 		
-		for instance in avg # Divide them by the number of measurements
+		for instance in avg: # Divide them by the number of measurements
 			instance /= times # 
 		
 		# Return the obj
