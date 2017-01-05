@@ -23,7 +23,7 @@ def main():
 		os.system('cls' if os.name == 'nt' else 'clear')
 
 		# Fetch data
-		print("Accurate x:", drone_imu.accel.accurate(10, 0.1).x)
+		print("Accurate x:", drone_imu.accel.accurate(3, 0.1).x)
 
 		# Print
 		#print("x:", drone_imu.accel.x)
@@ -31,7 +31,7 @@ def main():
 		#print("z:", drone_imu.accel.z)
 
 		# End the cycle
-		time.sleep(0.1)
+		time.sleep(2)
 
 	
 
