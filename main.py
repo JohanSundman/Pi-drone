@@ -14,7 +14,7 @@ import imu # Gyro & accelerometer
 
 def main():
 	# Create the components
-	imu = imu.Imu()
+	drone_imu = imu.Imu()
 
 	# The program loop
 	while True:
@@ -25,9 +25,9 @@ def main():
 		os.system('cls' if os.name == 'nt' else 'clear')
 
 		# Print
-		print("x:", imu.accel.x)
-		print("y:", imu.accel.y)
-		print("z:", imu.accel.z)
+		print("x:", drone_imu.accel.x)
+		print("y:", drone_imu.accel.y)
+		print("z:", drone_imu.accel.z)
 
 		# End the cycle
 		time.sleep(0.1)
