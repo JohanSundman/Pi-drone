@@ -41,7 +41,7 @@ class Imu:
 class Accelerometer:
 	
 	# Get a variable
-	def get(self, axis, scale = true):
+	def get(self, axis, scale = True):
 		temp = 0
 		if axis == "x":
 			temp = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
