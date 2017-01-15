@@ -37,14 +37,14 @@ def main():
 		print("Acc y: ", drone_imu.accel.y)
 		print("Acc z: ", drone_imu.accel.z)
 		print()
-		print("Acc Ax: ", (drone_imu.accel.Ax * 180 / math.pi))
-		print("Acc Ay: ", (drone_imu.accel.Ay * 180 / math.pi))
+		print("Acc Ax: ", radToDeg(drone_imu.accel.Ax))
+		print("Acc Ay: ", radToDeg(drone_imu.accel.Ay))
 		print()
 
 		# Print gyro data
-		print("Gyro x:", drone_imu.gyro.x)
-		print("Gyro y:", drone_imu.gyro.y)
-		print("Gyro z:", drone_imu.gyro.z)
+		print("Gyro x:", radToDeg(drone_imu.gyro.x)) # Rad per second -> deg per second
+		print("Gyro y:", radToDeg(drone_imu.gyro.y))
+		print("Gyro z:", radToDeg(drone_imu.gyro.z))
 
 		# End the cycle
 		time.sleep(2)
@@ -55,6 +55,8 @@ def startup():
 	print("Starting Pi-drone V.", VERSION)
 	print("----------------")
 
+def radToDeg(deg):
+	return deg * 180 / math.pi
 
 # Start the program
 main()

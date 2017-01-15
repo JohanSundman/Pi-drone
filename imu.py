@@ -42,7 +42,7 @@ class Imu:
 
 
 
-
+# G forces at each axis
 class Accelerometer:
 	
 	# Get a variable
@@ -70,12 +70,12 @@ class Accelerometer:
 		self.z = self.get("z", True)
 
 		# Get the rotational angles | http://www.hobbytronics.co.uk/accelerometer-info
-		self.Ax = math.atan2(self.y, math.sqrt(math.pow(self.x, 2) + math.pow(self.z, 2)))
-		self.Ay = math.atan2(self.x, math.sqrt(math.pow(self.y, 2) + math.pow(self.z, 2)))
+		self.Ax = math.atan2(self.x, math.sqrt(math.pow(self.y, 2) + math.pow(self.z, 2)))
+		self.Ay = math.atan2(self.y, math.sqrt(math.pow(self.x, 2) + math.pow(self.z, 2)))
 
 
 
-
+# Rad per second in rotational speed
 class Gyroscope:
 
 	# Get a variable
