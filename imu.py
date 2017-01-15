@@ -15,7 +15,7 @@ POWER_MGMT_2 = 0x6c
 
 # CONSTANT VALUES
 ACCEL_TO_G = 16384
-
+GYRO_TO_DEG = 131
 
 class Imu:
 	x = 0
@@ -92,7 +92,7 @@ class Accelerometer:
 class Gyroscope:
 
 	# Get a variable
-	def get(self, axis):
+	def get(self, axis, scale = True):
 		temp = False
 		if axis == "x":
 			temp = read_word_2c(SMBUSS_ADR, GYRO_X_ADR)
@@ -100,6 +100,12 @@ class Gyroscope:
 			temp = read_word_2c(SMBUSS_ADR, GYRO_Y_ADR)
 		elif axis == "z":
 			temp = read_word_2c(SMBUSS_ADR, GYRO_Y_ADR)
+		
+		# Scaling
+		if scale:
+			temp = temp / GYRO_TO_DEG
+
+		# Return
 		return temp
 
 
