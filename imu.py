@@ -86,7 +86,7 @@ class Gyroscope:
 		elif axis == "y":
 			temp = read_word_2c(SMBUSS_ADR, GYRO_Y_ADR)
 		elif axis == "z":
-			temp = read_word_2c(SMBUSS_ADR, GYRO_Y_ADR)
+			temp = read_word_2c(SMBUSS_ADR, GYRO_Z_ADR)
 		
 		# Scaling
 		if scale:
