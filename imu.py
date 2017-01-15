@@ -2,7 +2,7 @@
 import time
 from link import * # Link to the hardware
 
-# CONSTANTS
+# CONSTANTS ADRESSES
 ACCEL_X_ADR = 0x3b
 ACCEL_Y_ADR = 0x3d
 ACCEL_Z_ADR = 0x3f
@@ -13,27 +13,48 @@ SMBUSS_ADR = 0x68
 POWER_MGMT_1 = 0x6b
 POWER_MGMT_2 = 0x6c
 
+# CONSTANT VALUES
+ACCEL_TO_G = 16384
 
 
 class Imu:
+	x = 0
+	y = 0
+	z = 0
+
 	def __init__(self):
 		wake_up(SMBUSS_ADR, POWER_MGMT_1) # Activate the imu
 		self.accel = Accelerometer() # Create an accelerometer instance
 		self.gyro = Gyroscope() # Create a gyroscope instance
+
+	def merge(self):
+		offsetX = self.accel.get("x", true) - self.x
+
+		# Collect data and merge it with existing
+		self.x += offsetX;
+		self.y += offsetY;
+		self.z += offsetZ;
+
 
 
 
 class Accelerometer:
 	
 	# Get a variable
-	def get(self, axis):
-		temp = False
+	def get(self, axis, scale = true):
+		temp = 0
 		if axis == "x":
 			temp = read_word_2c(SMBUSS_ADR, ACCEL_X_ADR)
 		elif axis == "y":
 			temp = read_word_2c(SMBUSS_ADR, ACCEL_Y_ADR)
 		elif axis == "z":
 			temp = read_word_2c(SMBUSS_ADR, ACCEL_Z_ADR)
+
+		# Scale it
+		if scale:
+			temp = temp / ACCEL_TO_G
+
+		# Send it back
 		return temp
 
 
