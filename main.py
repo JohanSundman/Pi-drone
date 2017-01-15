@@ -37,8 +37,8 @@ def main():
 		print("Acc y: ", drone_imu.accel.y)
 		print("Acc z: ", drone_imu.accel.z)
 		print()
-		print("Acc Ax: ", drone_imu.accel.Ax)
-		print("Acc Ay: ", drone_imu.accel.Ay)
+		print("Acc Ax: ", (drone_imu.accel.Ax * 180 / math.pi))
+		print("Acc Ay: ", (drone_imu.accel.Ay * 180 / math.pi))
 		print()
 
 		# Print gyro data
