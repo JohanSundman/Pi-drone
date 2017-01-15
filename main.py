@@ -11,7 +11,7 @@ from link import * # Link to the hardware
 import drone
 import imu # Gyro & accelerometer
 
-VERSION = "1.5";
+VERSION = "1.5.1";
 
 
 def main():
@@ -27,8 +27,9 @@ def main():
 		# Clear before print
 		os.system('cls' if os.name == 'nt' else 'clear')
 
-		# Fetch data
+		# Fetch data accel data
 		data = drone_imu.accel.accurate(4, 0.1)
+		# Print accel data
 		print("X: ", data.x)
 		print("Y: ", data.y)
 		print("Z: ", data.z)
@@ -37,10 +38,12 @@ def main():
 		print("y: ", drone_imu.accel.get("y"))
 		print("z: ", drone_imu.accel.get("z"))
 
-		# Print
-		#print("x:", drone_imu.accel.x)
-		#print("y:", drone_imu.accel.y)
-		#print("z:", drone_imu.accel.z)
+		# Get gyro data
+
+		# Print gyro data
+		print("x:", drone_imu.accel.get("x"))
+		print("y:", drone_imu.accel.get("y"))
+		print("z:", drone_imu.accel.get("z"))
 
 		# End the cycle
 		time.sleep(2)

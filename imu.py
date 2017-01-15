@@ -6,9 +6,13 @@ from link import * # Link to the hardware
 ACCEL_X_ADR = 0x3b
 ACCEL_Y_ADR = 0x3d
 ACCEL_Z_ADR = 0x3f
+GYRO_X_ADR = 0x43
+GYRO_Y_ADR = 0x45
+GYRO_Z_ADR = 0x47
 SMBUSS_ADR = 0x68
 POWER_MGMT_1 = 0x6b
 POWER_MGMT_2 = 0x6c
+
 
 
 class Imu:
@@ -65,8 +69,23 @@ class Accelerometer:
 
 
 class Gyroscope:
+
+	# Get a variable
+	def get(self, axis):
+		temp = False
+		if axis == "x":
+			temp = read_word_2c(SMBUSS_ADR, GYRO_X_ADR)
+		elif axis == "y":
+			temp = read_word_2c(SMBUSS_ADR, GYRO_Y_ADR)
+		elif axis == "z":
+			temp = read_word_2c(SMBUSS_ADR, GYRO_Y_ADR)
+		return temp
+
+
 	def update(self):
-		pass
+		self.x = self.get("x")
+		self.y = self.get("y")
+		self.z = self.get("z")
 
 
 # An axis class containing x y z values
