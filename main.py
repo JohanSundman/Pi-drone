@@ -37,13 +37,14 @@ def main():
 		print("x: ", drone_imu.accel.get("x"))
 		print("y: ", drone_imu.accel.get("y"))
 		print("z: ", drone_imu.accel.get("z"))
+		print()
 
 		# Get gyro data
 
 		# Print gyro data
-		print("x:", drone_imu.accel.get("x"))
-		print("y:", drone_imu.accel.get("y"))
-		print("z:", drone_imu.accel.get("z"))
+		print("x:", drone_imu.gyro.get("x"))
+		print("y:", drone_imu.gyro.get("y"))
+		print("z:", drone_imu.gyro.get("z"))
 
 		# End the cycle
 		time.sleep(2)
