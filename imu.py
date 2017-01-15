@@ -1,5 +1,6 @@
 # Accelerometer & gyroscope
 import time
+import math
 from link import * # Link to the hardware
 
 # CONSTANTS ADRESSES
@@ -28,7 +29,11 @@ class Imu:
 		self.gyro = Gyroscope() # Create a gyroscope instance
 
 	def merge(self):
-		offsetX = self.accel.get("x", true) - self.x
+		# Update the values
+		self.accel.update()
+		self.gyro.update()
+
+		offsetX = self.accel.Ax - self.x
 
 		# Collect data and merge it with existing
 		self.x += offsetX;
@@ -59,33 +64,15 @@ class Accelerometer:
 
 
 	def update(self):
-		self.x = self.get("x")
-		self.y = self.get("y")
-		self.z = self.get("z")
+		# Update the regular values(scaled)
+		self.x = self.get("x", True)
+		self.y = self.get("y", True)
+		self.z = self.get("z", True)
 
+		# Get the rotational angles | http://www.hobbytronics.co.uk/accelerometer-info
+		self.Ax = math.atan2(self.x / math.sqrt(math.pow(self.y, 2) + math.pow(self.z, 2)))
+		self.Ay = math.atan2(self.y / math.sqrt(math.pow(self.x, 2) + math.pow(self.z, 2)))
 
-	def accurate(self, times, delay):
-		temp = [] # Temporary array of values
-		# Measuring multiple values
-		for i in range(times):
-			x = self.get("x")
-			y = self.get("y")
-			z = self.get("z")
-			temp.append(Axis(x,y,z))
-			#time.sleep(delay);
-
-		# Get the avarage out of them
-		avg = Axis(0,0,0)
-		for obj in temp: # Add them all together
-			avg.x += obj.x
-			avg.y += obj.y
-			avg.z += obj.z
-		avg.x /= times # Divide them by their amount
-		avg.y /= times
-		avg.z /= times
-		
-		# Return the obj
-		return avg
 
 
 
@@ -93,7 +80,7 @@ class Gyroscope:
 
 	# Get a variable
 	def get(self, axis, scale = True):
-		temp = False
+		temp = 0
 		if axis == "x":
 			temp = read_word_2c(SMBUSS_ADR, GYRO_X_ADR)
 		elif axis == "y":
@@ -113,6 +100,9 @@ class Gyroscope:
 		self.x = self.get("x")
 		self.y = self.get("y")
 		self.z = self.get("z")
+
+
+
 
 
 # An axis class containing x y z values
