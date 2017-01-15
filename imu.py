@@ -34,9 +34,9 @@ class Accelerometer:
 
 
 	def update(self):
-		self.x = get("x")
-		self.y = get("y")
-		self.z = get("z")
+		self.x = self.get("x")
+		self.y = self.get("y")
+		self.z = self.get("z")
 
 
 	def accurate(self, times, delay):
@@ -44,8 +44,8 @@ class Accelerometer:
 		# Measuring multiple values
 		for i in range(times):
 			x = self.get("x")
-			y = self.get("x")
-			z = self.get("x")
+			y = self.get("y")
+			z = self.get("z")
 			temp.append(Axis(x,y,z))
 			#time.sleep(delay);
 
@@ -69,6 +69,7 @@ class Gyroscope:
 		pass
 
 
+# An axis class containing x y z values
 class Axis:
 	def __init__(self, x, y, z):
 		self.x = x
