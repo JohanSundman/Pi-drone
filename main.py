@@ -3,7 +3,6 @@
 #
 #
 
-from threading import Thread
 import time
 import math
 import os
@@ -19,12 +18,7 @@ VERSION = "1.4.5";
 def main():
 
 	# Start the sensor loop with in a new core
-	#Thread(target = sensor.sensorLoop).start()
-	if __name__ == '__main__':
-		try:
-			Thread(target = sensor.sensorLoop, args = ()).start()
-		except Exception, errtxt:
-			print errtxt
+	sensor.Sensor().start()
 
 	# Create the components
 	drone_imu = imu.Imu()
