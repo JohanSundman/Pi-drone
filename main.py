@@ -3,11 +3,13 @@
 #
 #
 
+import thread
 import time
 import math
 import os
 
 from link import * # Link to the hardware
+from sensor import * # Do the sensing
 import drone
 import imu # Gyro & accelerometer
 
@@ -15,8 +17,9 @@ VERSION = "1.4.5";
 
 
 def main():
-	# Init text
-	startup()
+
+	# Start the sensor loop with in a new core
+	thread.start_new_thread(sensor.sensorLoop)
 
 	# Create the components
 	drone_imu = imu.Imu()
@@ -55,11 +58,6 @@ def main():
 		# End the cycle
 		time.sleep(2)
 
-	
-def startup():
-	print("----------------")
-	print("Starting Pi-drone V.", VERSION)
-	print("----------------")
 
 def radToDeg(deg):
 	return deg * 180 / math.pi
