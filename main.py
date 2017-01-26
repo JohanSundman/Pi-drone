@@ -18,7 +18,8 @@ VERSION = "1.4.5";
 def main():
 
 	# Start the sensor loop with in a new core
-	sensor.Sensor().start()
+	sensorUnit = sensor.Sensor()
+	sensorUnit.start()
 
 	# Create the components
 	drone_imu = imu.Imu()
