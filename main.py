@@ -19,7 +19,11 @@ VERSION = "1.4.5";
 def main():
 
 	# Start the sensor loop with in a new core
-	thread.start_new_thread(sensor.sensorLoop)
+	try:
+		thread.start_new_thread(sensor.sensorLoop)
+	except:
+		print("Couldn't start the sensor thread")
+		return False
 
 	# Create the components
 	drone_imu = imu.Imu()
