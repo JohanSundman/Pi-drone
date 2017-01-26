@@ -21,10 +21,9 @@ def main():
 	# Start the sensor loop with in a new core
 	try:
 		Thread(target = sensor.sensorLoop).start()
-		
-	except Exception, errtext:
+
+	except:
 		print("Couldn't start the sensor thread")
-		print(errtext)
 		return False
 
 	# Create the components
