@@ -8,7 +8,7 @@ import math
 import os
 
 from link import * # Link to the hardware
-from sensor import * # Do the sensing
+from sensor
 import drone
 import imu # Gyro & accelerometer
 
