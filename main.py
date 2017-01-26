@@ -46,6 +46,12 @@ def main():
 		print("Gyro y:", radToDeg(drone_imu.gyro.y))
 		print("Gyro z:", radToDeg(drone_imu.gyro.z))
 
+		# Merged!
+		drone.imu.merge()
+		print()
+		print("Merged x:", radToDeg(drone.imu.x))
+		print()
+		
 		# End the cycle
 		time.sleep(2)
 

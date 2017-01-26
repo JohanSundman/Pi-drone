@@ -33,12 +33,18 @@ class Imu:
 		self.accel.update()
 		self.gyro.update()
 
-		offsetX = self.accel.Ax - self.x
+		# Accelometer update
+		offsetAccelX = self.accel.Ax - self.x
+		offsetAccelY = self.accel.Ay - self.y
 
-		# Collect data and merge it with existing
-		self.x += offsetX;
-		self.y += offsetY;
-		self.z += offsetZ;
+		# Gyroscope update
+		offsetGyroX = self.gyro.x - self.x
+		offsetGyroY = self.gyro.y - self.y
+		offsetGyroZ = self.gyro.z - self.z
+
+		# Merge
+		self.x += (offsetGyroX / 10 * 8) + (offsetAccelX / 10 * 2) # Gyro diff 80% + Accel diff 20%
+
 
 
 
