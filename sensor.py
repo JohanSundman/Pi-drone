@@ -12,5 +12,7 @@ class Sensor(threading.Thread):
 
 	# Sensor loop
 	def run(self):
-		self.imu.merge() # Update the sensor
-		time.sleep(.01);
+		# Start the loop
+		while True:
+			self.imu.merge() # Update the sensor
+			time.sleep(.01);
