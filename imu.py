@@ -84,6 +84,11 @@ class Accelerometer:
 # Rad per second in rotational speed
 class Gyroscope:
 
+	def __init__(self):
+		self.x = 0
+		self.y = 0
+		self.z = 0
+
 	# Get a variable
 	def get(self, axis, scale = True):
 		temp = 0
@@ -100,7 +105,6 @@ class Gyroscope:
 
 		# Return
 		return temp
-
 
 	def update(self):
 		self.x += self.get("x")
