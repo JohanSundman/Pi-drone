@@ -3,7 +3,7 @@
 #
 #
 
-import thread
+from threading import Thread
 import time
 import math
 import os
@@ -20,9 +20,11 @@ def main():
 
 	# Start the sensor loop with in a new core
 	try:
-		thread.start_new_thread(sensor.sensorLoop)
-	except:
+		Thread(target = sensor.sensorLoop).start()
+		
+	except Exception, errtext:
 		print("Couldn't start the sensor thread")
+		print(errtext)
 		return False
 
 	# Create the components
