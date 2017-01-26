@@ -21,10 +21,10 @@ def main():
 	# Start the sensor loop with in a new core
 	#Thread(target = sensor.sensorLoop).start()
 	if __name__ == '__main__':
-   		try:
-        	Thread(target = sensor.sensorLoop, args=()).start()
-    	except Exception, errtxt:
-        	print errtxt
+		try:
+			Thread(target = sensor.sensorLoop, args = ()).start()
+		except Exception, errtxt:
+			print errtxt
 
 	# Create the components
 	drone_imu = imu.Imu()
