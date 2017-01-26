@@ -103,9 +103,9 @@ class Gyroscope:
 
 
 	def update(self):
-		self.x = self.get("x")
-		self.y = self.get("y")
-		self.z = self.get("z")
+		self.x += self.get("x")
+		self.y += self.get("y")
+		self.z += self.get("z")
 
 
 
