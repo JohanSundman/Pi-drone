@@ -33,24 +33,22 @@ class Imu:
 		self.accel.update()
 		self.gyro.update()
 
-		# Accelometer update
-		offsetAccelX = self.accel.Ax - self.x
-		offsetAccelY = self.accel.Ay - self.y
+		## Data variables
+		# self.accel x, y z, Ax, Ay
+		# self.gyro x, y, z
 
-		# Gyroscope update
-		offsetGyroX = self.gyro.x - self.x
-		offsetGyroY = self.gyro.y - self.y
-		offsetGyroZ = self.gyro.z - self.z
-
-		# Merge
-		self.x += (offsetGyroX / 10 * 8) + (offsetAccelX / 10 * 2) # Gyro diff 80% + Accel diff 20%
-
+		# Here is what our algorithm will do:
+		# - accelerometer tells us: "You are now at position Racc"
+		# - we say "Thank you, but let me check",
+		# - then correct this information with gyroscope data as well as with past Rest data and we output a new estimated vector Rest.
+		# - we consider Rest to be our "best bet" as to the current position of the device.
+		# Credit: http://www.instructables.com/id/Accelerometer-Gyro-Tutorial/step3/Combining-the-Accelerometer-and-Gyro/
 
 
 
 # G forces at each axis
 class Accelerometer:
-	
+
 	# Get a variable
 	def get(self, axis, scale = True):
 		temp = 0
@@ -98,7 +96,7 @@ class Gyroscope:
 			temp = read_word_2c(SMBUSS_ADR, GYRO_Y_ADR)
 		elif axis == "z":
 			temp = read_word_2c(SMBUSS_ADR, GYRO_Z_ADR)
-		
+
 		# Scaling
 		if scale:
 			temp = temp / GYRO_TO_DEG
@@ -121,4 +119,3 @@ class Axis:
 		self.x = x
 		self.y = y
 		self.z = z
-
